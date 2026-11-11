@@ -1,0 +1,140 @@
+1 st program 
+
+#!/bin/bash
+
+echo "Enter Student Name:"
+read -r name
+
+echo "Enter Register Number:"
+read -r regno
+
+# Check empty inputs
+if [ -z "$name" ] || [ -z "$regno" ]; then
+    echo "Error: Name and Register Number cannot be empty."
+    exit 1
+fi
+
+# Read and validate marks
+marks=()
+
+for i in 1 2 3 4 5
+do
+    while true
+    do
+        echo "Enter Mark $i (0-100):"
+        read -r mark
+
+        if [[ "$mark" =~ ^[0-9]+$ ]] &&
+           [ "$mark" -ge 0 ] && [ "$mark" -le 100 ]; then
+
+            marks+=("$mark")
+            break
+        else
+            echo "Invalid mark! Enter a number from 0 to 100."
+        fi
+    done
+done
+
+# Calculate total
+total=0
+
+for mark in "${marks[@]}"
+do
+    total=$((total + mark))
+done
+
+# Calculate average
+avg=$((total / 5))
+
+# Calculate grade
+if [ "$avg" -ge 90 ]; then
+    grade="A+"
+elif [ "$avg" -ge 75 ]; then
+    grade="A"
+elif [ "$avg" -ge 60 ]; then
+    grade="B"
+elif [ "$avg" -ge 50 ]; then
+    grade="C"
+else
+    grade="Fail"
+fi
+
+# Display student result
+echo "-----------------------------"
+echo "Student Name : $name"
+echo "Register No  : $regno"
+echo "Total Marks  : $total"
+echo "Average      : $avg"
+echo "Grade        : $grade"
+echo "-----------------------------"
+
+
+Run panra method :
+1.nano filename.sh 
+2.control+o and Enter 
+3.control+x 
+4.chmod +x filename.sh
+5.  ./filename.sh
+
+
+program 2:
+
+
+#!/bin/bash
+
+total=0
+
+echo "------ Shopping Cart ------"
+echo "1. Pen    - Rs.10"
+echo "2. Pencil - Rs.5"
+echo "3. Book   - Rs.50"
+echo "4. Bag    - Rs.500"
+echo "5. Exit"
+
+while true
+do
+    echo -n "Enter your choice: "
+    read -r choice
+
+    case "$choice" in
+        1)
+            echo "Pen added"
+            total=$((total + 10))
+            ;;
+        2)
+            echo "Pencil added"
+            total=$((total + 5))
+            ;;
+        3)
+            echo "Book added"
+            total=$((total + 50))
+            ;;
+        4)
+            echo "Bag added"
+            total=$((total + 500))
+            ;;
+        5)
+            break
+            ;;
+        *)
+            echo "Invalid choice! Try again."
+            ;;
+    esac
+done
+
+echo "---------------------------"
+echo "Total Amount = Rs.$total"
+echo "Thank You!"
+echo "---------------------------"
+
+
+Run panra method :
+1.nano filename.sh 
+2.control+o and Enter 
+3.control+x 
+4.chmod +x filename.sh
+5.  ./filename.sh
+
+
+program 3:
+
